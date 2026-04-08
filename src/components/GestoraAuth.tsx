@@ -129,7 +129,7 @@ export function GestoraAuth({ children }: { children: React.ReactNode }) {
         <input key={i} ref={(el) => { refs.current[i] = el; }} type="password" inputMode="numeric" maxLength={1} value={digit}
           onChange={(e) => handlePinChange(i, e.target.value, isConfirm)}
           onKeyDown={(e) => handleKeyDown(i, e, isConfirm)}
-          className="w-14 h-14 text-center text-2xl font-bold border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-800 dark:text-slate-100 focus:border-elis-teal focus:ring-2 focus:ring-elis-teal/20 outline-none transition-all"
+          className="w-14 h-14 text-center text-2xl font-bold border-2 border-slate-300 rounded-xl bg-white focus:border-elis-teal focus:ring-2 focus:ring-elis-teal/20 outline-none transition-all"
         />
       ))}
     </div>
@@ -137,7 +137,7 @@ export function GestoraAuth({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
-      <div className="bg-white dark:bg-slate-800 rounded-2xl card-shadow border border-slate-200 dark:border-slate-700 p-10 max-w-sm w-full space-y-6 relative overflow-hidden">
+      <div className="bg-white rounded-2xl card-shadow border border-slate-200 p-10 max-w-sm w-full space-y-6 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-elis-blue to-elis-blue-dark rounded-t-2xl" />
         <div className="text-center space-y-3">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-elis-blue-light mb-2">
@@ -168,8 +168,8 @@ export function GestoraAuth({ children }: { children: React.ReactNode }) {
           </div>
         )}
         {showReset && (
-          <div className="bg-elis-red-light dark:bg-slate-700 rounded-lg p-4 space-y-3 animate-in fade-in">
-            <p className="text-sm text-slate-700 dark:text-slate-300">Isso irá apagar o PIN atual. Você precisará definir um novo.</p>
+          <div className="bg-elis-red-light rounded-lg p-4 space-y-3 animate-in fade-in">
+            <p className="text-sm text-slate-700">Isso irá apagar o PIN atual. Você precisará definir um novo.</p>
             <div className="flex gap-2">
               <Button variant="destructive" size="sm" className="flex-1" onClick={handleResetPin}><RotateCcw className="w-4 h-4 mr-1" />Confirmar Reset</Button>
               <Button variant="outline" size="sm" onClick={() => setShowReset(false)}>Cancelar</Button>

@@ -99,12 +99,12 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 bg-white dark:bg-slate-900 p-6 rounded-xl card-shadow border border-slate-200 dark:border-slate-700">
+    <form onSubmit={handleSubmit} className="space-y-8 bg-white p-6 rounded-xl card-shadow border border-slate-200">
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100 tracking-tight">Dados do Solicitante</h2>
+        <h2 className="text-xl font-semibold text-slate-800 tracking-tight">Dados do Solicitante</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Nome Completo</label>
+            <label className="text-sm font-medium text-slate-700">Nome Completo</label>
             <Input 
               placeholder="Digite seu nome" 
               value={solicitante}
@@ -112,9 +112,9 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Departamento</label>
+            <label className="text-sm font-medium text-slate-700">Departamento</label>
             <select 
-              className="flex h-10 w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 dark:text-slate-100 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elis-teal focus-visible:ring-offset-2"
+              className="flex h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elis-teal focus-visible:ring-offset-2"
               value={departamento}
               onChange={(e) => setDepartamento(e.target.value)}
             >
@@ -128,13 +128,13 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
         </div>
       </div>
 
-      <div className="space-y-2 pt-4 border-t border-slate-200 dark:border-slate-700">
+      <div className="space-y-2 pt-4 border-t border-slate-200">
         <div className="flex items-center gap-2">
           <FileText className="w-4 h-4 text-slate-500" />
-          <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Justificativa da Compra</label>
+          <label className="text-sm font-medium text-slate-700">Justificativa da Compra</label>
         </div>
         <textarea
-          className="flex w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 dark:text-slate-100 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elis-teal focus-visible:ring-offset-2 min-h-[100px] resize-none"
+          className="flex w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elis-teal focus-visible:ring-offset-2 min-h-[100px] resize-none"
           placeholder="Descreva o motivo da solicitação..."
           value={justificativa}
           onChange={(e) => setJustificativa(e.target.value)}
@@ -142,9 +142,9 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
         <p className="text-xs text-slate-400">Opcional, mas recomendado para aprovação mais rápida.</p>
       </div>
 
-      <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+      <div className="space-y-4 pt-4 border-t border-slate-200">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100 tracking-tight">Itens do Pedido</h2>
+          <h2 className="text-xl font-semibold text-slate-800 tracking-tight">Itens do Pedido</h2>
           <Button type="button" onClick={handleAddItem} variant="outline" size="sm" className="gap-2">
             <Plus className="h-4 w-4" /> Adicionar Item
           </Button>
@@ -164,7 +164,7 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
               <div className="col-span-4 sm:col-span-2 space-y-1">
                 {index === 0 && <label className="text-xs font-medium text-slate-500">Categoria</label>}
                 <select
-                  className="flex h-10 w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 dark:text-slate-100 px-2 py-2 text-xs ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elis-teal"
+                  className="flex h-10 w-full rounded-md border border-slate-300 bg-white px-2 py-2 text-xs ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elis-teal"
                   value={item.categoria || 'TI'}
                   onChange={(e) => handleItemChange(item.id!, 'categoria', e.target.value)}
                 >
@@ -195,7 +195,7 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
               </div>
               <div className="col-span-2 sm:col-span-2 space-y-1">
                 {index === 0 && <label className="text-xs font-medium text-slate-500">Subtotal</label>}
-                <div className="h-10 flex items-center text-sm font-medium text-slate-700 dark:text-slate-300">
+                <div className="h-10 flex items-center text-sm font-medium text-slate-700">
                   {formatCurrency((item.quantidade || 0) * (item.preco_unitario || 0))}
                 </div>
               </div>
@@ -214,14 +214,14 @@ export function OrderForm({ redirectTo = '/' }: { redirectTo?: string }) {
         </div>
 
         {/* Total */}
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-700">
+        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
           <DollarSign className="w-5 h-5 text-elis-teal" />
           <span className="text-sm font-medium text-slate-500">Valor Total:</span>
-          <span className="text-xl font-bold text-slate-900 dark:text-slate-100">{formatCurrency(valorTotal)}</span>
+          <span className="text-xl font-bold text-slate-900">{formatCurrency(valorTotal)}</span>
         </div>
       </div>
 
-      <div className="pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+      <div className="pt-6 border-t border-slate-200 flex justify-end">
         <Button type="submit" size="lg" className="gap-2 bg-elis-teal hover:bg-elis-teal-dark w-full md:w-auto">
           <Save className="h-4 w-4" /> Enviar Pedido
         </Button>

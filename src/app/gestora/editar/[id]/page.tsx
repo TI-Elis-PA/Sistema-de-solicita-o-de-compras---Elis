@@ -102,26 +102,26 @@ export default function EditarPedidoPage() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8 bg-white dark:bg-slate-900 p-6 rounded-xl card-shadow border border-slate-200 dark:border-slate-700">
+        <form onSubmit={handleSubmit} className="space-y-8 bg-white p-6 rounded-xl card-shadow border border-slate-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Nome Completo</label>
+              <label className="text-sm font-medium text-slate-700">Nome Completo</label>
               <Input value={solicitante} onChange={(e) => setSolicitante(e.target.value)} />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Departamento</label>
-              <select className="flex h-10 w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 dark:text-slate-100 px-3 py-2 text-sm focus:ring-2 focus:ring-elis-teal outline-none" value={departamento} onChange={(e) => setDepartamento(e.target.value)}>
+              <label className="text-sm font-medium text-slate-700">Departamento</label>
+              <select className="flex h-10 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-elis-teal outline-none" value={departamento} onChange={(e) => setDepartamento(e.target.value)}>
                 <option value="TI">TI</option><option value="RH">RH</option><option value="Financeiro">Financeiro</option><option value="Marketing">Marketing</option><option value="Operações">Operações</option>
               </select>
             </div>
           </div>
 
-          <div className="space-y-2 pt-4 border-t border-slate-200 dark:border-slate-700">
-            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Justificativa</label>
-            <textarea className="w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 dark:text-slate-100 px-3 py-2 text-sm min-h-[80px] resize-none focus:ring-2 focus:ring-elis-teal outline-none" value={justificativa} onChange={(e) => setJustificativa(e.target.value)} />
+          <div className="space-y-2 pt-4 border-t border-slate-200">
+            <label className="text-sm font-medium text-slate-700">Justificativa</label>
+            <textarea className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm min-h-[80px] resize-none focus:ring-2 focus:ring-elis-teal outline-none" value={justificativa} onChange={(e) => setJustificativa(e.target.value)} />
           </div>
 
-          <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+          <div className="space-y-4 pt-4 border-t border-slate-200">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold">Itens</h2>
               <Button type="button" onClick={handleAddItem} variant="outline" size="sm"><Plus className="h-4 w-4 mr-1" />Adicionar</Button>
@@ -135,7 +135,7 @@ export default function EditarPedidoPage() {
                   </div>
                   <div className="col-span-4 sm:col-span-2 space-y-1">
                     {index === 0 && <label className="text-xs font-medium text-slate-500">Categoria</label>}
-                    <select className="flex h-10 w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-2 py-2 text-xs focus:ring-2 focus:ring-elis-teal outline-none" value={item.categoria || 'TI'} onChange={(e) => handleItemChange(item.id!, 'categoria', e.target.value)}>
+                    <select className="flex h-10 w-full rounded-md border border-slate-300 bg-white px-2 py-2 text-xs focus:ring-2 focus:ring-elis-teal outline-none" value={item.categoria || 'TI'} onChange={(e) => handleItemChange(item.id!, 'categoria', e.target.value)}>
                       {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
                     </select>
                   </div>
@@ -155,7 +155,7 @@ export default function EditarPedidoPage() {
                 </div>
               ))}
             </div>
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
               <DollarSign className="w-5 h-5 text-elis-teal" />
               <span className="text-sm text-slate-500">Total:</span>
               <span className="text-xl font-bold">{formatCurrency(valorTotal)}</span>

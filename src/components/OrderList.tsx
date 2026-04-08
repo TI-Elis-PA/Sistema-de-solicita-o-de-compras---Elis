@@ -150,11 +150,11 @@ export function OrderList() {
 
   if (orders.length === 0) {
     return (
-      <div className="bg-white dark:bg-slate-800 p-12 text-center rounded-xl border border-slate-200 dark:border-slate-700 card-shadow">
+      <div className="bg-white p-12 text-center rounded-xl border border-slate-200 card-shadow">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-elis-teal-light mb-4 text-elis-teal">
           <Clock className="w-8 h-8" />
         </div>
-        <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-1">Nenhum pedido encontrado</h3>
+        <h3 className="text-lg font-medium text-slate-900 mb-1">Nenhum pedido encontrado</h3>
         <p className="text-slate-500">Nenhum pedido foi registrado ainda.</p>
       </div>
     );
@@ -163,7 +163,7 @@ export function OrderList() {
   return (
     <div className="space-y-4">
       {/* Filters Bar */}
-      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 card-shadow p-4 space-y-3">
+      <div className="bg-white rounded-xl border border-slate-200 card-shadow p-4 space-y-3">
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -172,7 +172,7 @@ export function OrderList() {
           <div className="flex gap-2 flex-wrap">
             <div className="relative">
               <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-              <select className="h-10 pl-9 pr-4 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-slate-100 text-sm appearance-none" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as OrderStatus | 'Todos')}>
+              <select className="h-10 pl-9 pr-4 rounded-md border border-slate-300 bg-white text-sm appearance-none" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as OrderStatus | 'Todos')}>
                 <option value="Todos">Todos Status</option>
                 <option value="Pendente">Pendente</option>
                 <option value="Em Análise">Em Análise</option>
@@ -180,7 +180,7 @@ export function OrderList() {
                 <option value="Rejeitado">Rejeitado</option>
               </select>
             </div>
-            <select className="h-10 px-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-slate-100 text-sm appearance-none" value={departamentoFilter} onChange={(e) => setDepartamentoFilter(e.target.value)}>
+            <select className="h-10 px-3 rounded-md border border-slate-300 bg-white text-sm appearance-none" value={departamentoFilter} onChange={(e) => setDepartamentoFilter(e.target.value)}>
               {departamentos.map(dep => (<option key={dep} value={dep}>{dep === 'Todos' ? 'Todos Deptos.' : dep}</option>))}
             </select>
           </div>
@@ -189,9 +189,9 @@ export function OrderList() {
         <div className="flex flex-col sm:flex-row gap-2 items-center">
           <CalendarDays className="w-4 h-4 text-slate-400 hidden sm:block" />
           <span className="text-xs text-slate-500 hidden sm:block">Período:</span>
-          <input type="date" className="h-9 px-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-slate-100 text-sm" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
+          <input type="date" className="h-9 px-3 rounded-md border border-slate-300 bg-white text-sm" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
           <span className="text-xs text-slate-400">até</span>
-          <input type="date" className="h-9 px-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-slate-100 text-sm" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
+          <input type="date" className="h-9 px-3 rounded-md border border-slate-300 bg-white text-sm" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
           {(dateFrom || dateTo) && (
             <Button variant="ghost" size="sm" className="text-xs" onClick={() => { setDateFrom(''); setDateTo(''); }}>Limpar</Button>
           )}
@@ -202,7 +202,7 @@ export function OrderList() {
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden md:block bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 card-shadow overflow-hidden">
+      <div className="hidden md:block bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
         {filteredOrders.length === 0 ? (
           <div className="p-8 text-center text-slate-500"><Search className="w-8 h-8 mx-auto mb-2 text-slate-300" /><p>Nenhum resultado.</p></div>
         ) : (
@@ -222,7 +222,7 @@ export function OrderList() {
               {filteredOrders.map((order) => (
                 <TableRow key={order.id}>
                   <TableCell className="font-mono text-xs text-slate-500">{order.id.substring(0, 8)}</TableCell>
-                  <TableCell className="font-medium text-slate-900 dark:text-slate-100">{order.solicitante}</TableCell>
+                  <TableCell className="font-medium text-slate-900">{order.solicitante}</TableCell>
                   <TableCell>{order.departamento}</TableCell>
                   <TableCell>{format(new Date(order.data_criacao), "dd/MM/yy", { locale: ptBR })}</TableCell>
                   <TableCell className="font-medium text-elis-teal">{formatCurrency(order.valor_total || 0)}</TableCell>
@@ -246,12 +246,12 @@ export function OrderList() {
       {/* Mobile Cards */}
       <div className="md:hidden space-y-3">
         {filteredOrders.length === 0 ? (
-          <div className="p-8 text-center text-slate-500 bg-white dark:bg-slate-800 rounded-xl card-shadow"><Search className="w-8 h-8 mx-auto mb-2 text-slate-300" /><p>Nenhum resultado.</p></div>
+          <div className="p-8 text-center text-slate-500 bg-white rounded-xl card-shadow"><Search className="w-8 h-8 mx-auto mb-2 text-slate-300" /><p>Nenhum resultado.</p></div>
         ) : filteredOrders.map((order) => (
-          <div key={order.id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 card-shadow p-4 space-y-3">
+          <div key={order.id} className="bg-white rounded-xl border border-slate-200 card-shadow p-4 space-y-3">
             <div className="flex justify-between items-start">
               <div>
-                <p className="font-medium text-slate-900 dark:text-slate-100">{order.solicitante}</p>
+                <p className="font-medium text-slate-900">{order.solicitante}</p>
                 <p className="text-xs text-slate-500 font-mono">#{order.id.substring(0, 8)} · {order.departamento}</p>
               </div>
               <StatusBadge status={order.status} />
@@ -260,7 +260,7 @@ export function OrderList() {
               <span className="text-slate-500">{format(new Date(order.data_criacao), "dd/MM/yy HH:mm")}</span>
               <span className="font-bold text-elis-teal">{formatCurrency(order.valor_total || 0)}</span>
             </div>
-            <div className="flex gap-2 pt-2 border-t border-slate-100 dark:border-slate-700">
+            <div className="flex gap-2 pt-2 border-t border-slate-100">
               <Button variant="ghost" size="sm" className="flex-1 text-elis-teal" onClick={() => { setSelectedOrder(order); setShowObsField(null); setObservacao(''); setGestoraName(''); }}>
                 <Eye className="w-4 h-4 mr-1" /> Ver
               </Button>
@@ -282,17 +282,17 @@ export function OrderList() {
               <div><span className="block text-slate-500">Status</span><StatusBadge status={selectedOrder.status} /></div>
               <div><span className="block text-slate-500">Valor Total</span><span className="font-bold text-elis-teal text-lg">{formatCurrency(selectedOrder.valor_total || 0)}</span></div>
             </div>
-            {selectedOrder.justificativa && (<div className="text-sm"><span className="block text-slate-500 mb-1">Justificativa</span><p className="text-slate-700 bg-slate-50 dark:bg-slate-700 p-3 rounded-md">{selectedOrder.justificativa}</p></div>)}
-            {selectedOrder.observacao && (<div className="text-sm"><span className="block text-slate-500 mb-1">Observação</span><p className="text-slate-700 bg-slate-50 dark:bg-slate-700 p-3 rounded-md flex items-start gap-2"><MessageSquare className="w-4 h-4 mt-0.5 text-slate-400 flex-shrink-0" />{selectedOrder.observacao}</p></div>)}
+            {selectedOrder.justificativa && (<div className="text-sm"><span className="block text-slate-500 mb-1">Justificativa</span><p className="text-slate-700 bg-slate-50 p-3 rounded-md">{selectedOrder.justificativa}</p></div>)}
+            {selectedOrder.observacao && (<div className="text-sm"><span className="block text-slate-500 mb-1">Observação</span><p className="text-slate-700 bg-slate-50 p-3 rounded-md flex items-start gap-2"><MessageSquare className="w-4 h-4 mt-0.5 text-slate-400 flex-shrink-0" />{selectedOrder.observacao}</p></div>)}
 
             {selectedOrder.assinatura && (
-              <div className="text-sm bg-elis-blue-light/50 dark:bg-slate-700 border border-elis-blue/20 rounded-lg p-4">
+              <div className="text-sm bg-elis-blue-light/50 border border-elis-blue/20 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-2"><Fingerprint className="w-4 h-4 text-elis-blue" /><span className="font-semibold text-elis-blue">Assinatura Digital</span></div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div><span className="text-slate-500 block">Gestora</span><span className="font-medium">{selectedOrder.assinatura.gestora}</span></div>
                   <div><span className="text-slate-500 block">Ação</span><span className="font-medium">{selectedOrder.assinatura.acao}</span></div>
                   <div><span className="text-slate-500 block">Data</span><span className="font-medium">{format(new Date(selectedOrder.assinatura.dataHora), "dd/MM/yy HH:mm:ss")}</span></div>
-                  <div><span className="text-slate-500 block">Hash</span><span className="font-mono text-xs text-elis-blue bg-white dark:bg-slate-800 px-2 py-0.5 rounded">{selectedOrder.assinatura.hash}</span></div>
+                  <div><span className="text-slate-500 block">Hash</span><span className="font-mono text-xs text-elis-blue bg-white px-2 py-0.5 rounded">{selectedOrder.assinatura.hash}</span></div>
                 </div>
               </div>
             )}
@@ -301,7 +301,7 @@ export function OrderList() {
               <h4 className="font-semibold text-sm border-b pb-2 mb-2">Itens ({selectedOrder.total_itens})</h4>
               <div className="space-y-2 max-h-40 overflow-y-auto">
                 {selectedOrder.items.map((item, idx) => (
-                  <div key={item.id} className="flex justify-between items-center text-sm p-2.5 bg-slate-50 dark:bg-slate-700 rounded-md">
+                  <div key={item.id} className="flex justify-between items-center text-sm p-2.5 bg-slate-50 rounded-md">
                     <div>
                       <span className="font-medium">{idx + 1}. {item.nome_produto}</span>
                       <span className="text-xs text-slate-400 ml-2">{item.categoria || ''}</span>
@@ -321,7 +321,7 @@ export function OrderList() {
                   <div><label className="text-sm font-medium flex items-center gap-1.5 mb-1"><ShieldCheck className="w-4 h-4 text-elis-blue" />Nome da Gestora</label><Input placeholder="Nome completo..." value={gestoraName} onChange={(e) => setGestoraName(e.target.value)} /></div>
                 )}
                 <div><label className="text-sm font-medium mb-1 block">Observação {showObsField === 'rejeitar' ? '(motivo)' : '(opcional)'}</label>
-                  <textarea className="w-full rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm min-h-[70px] resize-none focus:ring-2 focus:ring-elis-teal outline-none" value={observacao} onChange={(e) => setObservacao(e.target.value)} />
+                  <textarea className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm min-h-[70px] resize-none focus:ring-2 focus:ring-elis-teal outline-none" value={observacao} onChange={(e) => setObservacao(e.target.value)} />
                 </div>
                 <div className="flex gap-2">
                   <Button className={`flex-1 ${showObsField === 'aprovar' ? 'bg-elis-teal hover:bg-elis-teal-dark' : showObsField === 'analise' ? 'bg-purple-600 hover:bg-purple-700' : ''}`} variant={showObsField === 'rejeitar' ? 'destructive' : 'default'} onClick={() => handleApproveReject(showObsField === 'aprovar' ? 'Aprovado' : showObsField === 'analise' ? 'Em Análise' : 'Rejeitado')} disabled={showObsField !== 'analise' && !gestoraName.trim()}>
@@ -354,7 +354,7 @@ export function OrderList() {
           {auditEntries.length === 0 ? (
             <p className="text-sm text-slate-500 text-center py-4">Nenhum registro encontrado.</p>
           ) : auditEntries.map((entry) => (
-            <div key={entry.id} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-700 rounded-lg text-sm">
+            <div key={entry.id} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg text-sm">
               <div className="p-1.5 rounded-full bg-elis-teal-light flex-shrink-0"><History className="w-3.5 h-3.5 text-elis-teal" /></div>
               <div className="flex-1">
                 <div className="flex justify-between items-start">
@@ -374,7 +374,7 @@ export function OrderList() {
         <div className="space-y-4">
           <div className="flex items-start gap-3">
             <div className="p-2 rounded-full bg-elis-red-light flex-shrink-0"><Trash2 className="w-5 h-5 text-elis-red" /></div>
-            <p className="text-sm text-slate-700 dark:text-slate-300">Excluir pedido <strong>#{deleteTarget?.id.substring(0, 8)}</strong>? Esta ação não pode ser desfeita.</p>
+            <p className="text-sm text-slate-700">Excluir pedido <strong>#{deleteTarget?.id.substring(0, 8)}</strong>? Esta ação não pode ser desfeita.</p>
           </div>
           <div><label className="text-sm font-medium flex items-center gap-1.5 mb-1"><ShieldCheck className="w-4 h-4 text-elis-blue" />Nome da Gestora</label><Input placeholder="Nome completo..." value={deleteGestoraName} onChange={(e) => setDeleteGestoraName(e.target.value)} /></div>
           <div className="flex gap-2 justify-end">

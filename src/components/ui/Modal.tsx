@@ -21,7 +21,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
           <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
           <button
             onClick={onClose}
-            className="rounded-full p-1 opacity-70 ring-offset-background transition-all hover:opacity-100 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            className="rounded-full p-1 opacity-70 ring-offset-background transition-all hover:opacity-100 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-elis-teal focus:ring-offset-2"
           >
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>

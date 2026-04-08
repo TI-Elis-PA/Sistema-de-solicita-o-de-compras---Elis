@@ -50,12 +50,12 @@ export default function Home() {
             <Link
               key={profile.title}
               href={profile.href}
-              className={`relative overflow-hidden bg-white dark:bg-slate-800 rounded-2xl border ${profile.borderColor} card-shadow hover:-translate-y-2 transition-all duration-300 group p-8 flex flex-col items-center text-center`}
+              className={`relative overflow-hidden bg-white rounded-2xl border ${profile.borderColor} card-shadow hover:-translate-y-2 transition-all duration-300 group p-8 flex flex-col items-center text-center`}
             >
               <div className={`p-4 rounded-2xl ${profile.bgLight} mb-5 group-hover:scale-110 transition-transform duration-300`}>
                 <Icon className={`w-10 h-10 ${profile.textColor}`} />
               </div>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">{profile.title}</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-2">{profile.title}</h2>
               <p className="text-sm text-slate-500 mb-5 leading-relaxed">{profile.description}</p>
               <div className={`inline-flex items-center gap-2 text-sm font-medium ${profile.textColor} group-hover:gap-3 transition-all duration-300`}>
                 Acessar <ArrowRight className="w-4 h-4" />

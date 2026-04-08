@@ -82,9 +82,8 @@ export function Dashboard() {
       {cards.map((card) => {
         const Icon = card.icon;
         return (
-          <div
-            key={card.label}
-            className={`relative overflow-hidden bg-white dark:bg-slate-800 rounded-xl border ${card.borderColor} card-shadow hover:-translate-y-1 transition-all duration-300 group cursor-default`}
+          <div key={card.label}
+            className={`relative overflow-hidden bg-white rounded-xl border ${card.borderColor} card-shadow hover:-translate-y-1 transition-all duration-300 group cursor-default`}
           >
             <div className="p-4">
               <div className="flex items-center justify-between mb-2">
@@ -93,7 +92,7 @@ export function Dashboard() {
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-elis-teal transition-all duration-300" />
               </div>
-              <p className="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">{card.value}</p>
+              <p className="text-2xl font-bold text-slate-900 tracking-tight">{card.value}</p>
               <p className="text-xs text-slate-500 mt-0.5">{card.label}</p>
             </div>
             <div className={`h-1 bg-gradient-to-r ${card.gradient} rounded-b-xl`} />

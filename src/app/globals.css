@@ -24,13 +24,6 @@
   --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 8px 24px rgba(0,165,170,0.10);
 }
 
-.dark {
-  --background: #0f172a;
-  --foreground: #f1f5f9;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
-  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.4), 0 8px 24px rgba(0,165,170,0.15);
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

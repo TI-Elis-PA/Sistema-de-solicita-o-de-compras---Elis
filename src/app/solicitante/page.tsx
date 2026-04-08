@@ -30,7 +30,7 @@ export default function SolicitantePage() {
       </div>
 
       {/* Advanced search by name */}
-      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 card-shadow p-4">
+      <div className="bg-white rounded-xl border border-slate-200 card-shadow p-4">
         <div className="flex gap-3 items-end">
           <div className="flex-1 space-y-1">
             <label className="text-xs font-medium text-slate-500 flex items-center gap-1.5">
